@@ -1,0 +1,65 @@
+server:
+  port: 8080
+  address: 0.0.0.0
+  tomcat:
+    remote-ip-header: x-forwarded-for
+    protocol-header: x-forwarded-proto
+    port-header: X-Forwarded-Port
+  use-forward-headers: true
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  redis:
+    host: 47.100.170.169
+    password: 3hdg23y$%3||^5&|6=&*&*LKSDJN
+    port: 6379
+    database: 0
+    jedis:
+      pool:
+        max-active: 100
+        max-wait: -1ms
+        min-idle: 10
+        max-idle: 20
+    timeout: 1000m
+  jackson:
+    date-format: yyyy-MM-dd hh:mm:ss
+    time-zone: GMT+8
+    serialization:
+      write-dates-as-timestamps: false
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: root
+    url: jdbc:mysql://47.96.225.129:3308/free-go
+    #url: jdbc:mysql://127.0.0.1:3306/micro-platform?characterEncoding=UTF-8&serverTimezone=GMT
+    dbcp2:
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      validation-query: select 'x'
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+
+  thymeleaf:
+    suffix: .html
+    mode: HTML
+    cache: false
+    encoding: UTF-8
+    check-template-location: true
+    prefix: classpath:/templates/
+
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  typeAliasesPackage: com.example.demo
+  config-location: classpath:mybatis-config.xml
+
+
+wx:
+  appId: wx012853c78ec74d81
+  appSecret: c8ed436a7e2ac0a5dceb6dea0cd8caef
+
+requiredHeaders: appPlatform,sessionId
